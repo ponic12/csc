@@ -1,0 +1,43 @@
+<div ng-controller="bitacoras.ctrl as vm" class="bit_frame">
+       
+    <span class="bit_folder" ng-repeat="folder in vm.dataBitacoras track by $index" >
+        
+        <button type="button" class="btn bit_btn"  
+                ng-style="vm.setColor(folder)"
+                ng-click="vm.goto(folder)"
+                hold-button="vm.edit($event, $promise, folder)" hold-button-delay="500">
+          
+          <div ng-hide="folder.editMode" class="bit_nombre">{{folder.nombre}}</div>
+          <input ng-show="folder.editMode" class="bit_nombre" type="text" ng-model="vm.selBitacora.nombre">
+          
+          <div class="bit_fecha">{{vm.formatFecha(folder.updatedAt)}}</div>
+          
+          <input class="bit_color_picker" ng-show="folder.editMode" type="color" ng-model="vm.selBitacora.color">
+          
+          <div class="bit_alerts" ng-show="folder.alertsCounter > 0">
+            <div class="bit_alertsNum">{{folder.alertsCounter}}</div>
+          </div>
+      
+          <button class="btn btn-default bit_btn_close" ng-show="folder.editMode" ng-click="vm.destroy(folder)">
+            <span class="glyphicon glyphicon-remove bit_glyph_close"></span>
+          </button>
+          
+          <button class="btn btn-default bit_btn_save" ng-show="folder.editMode" ng-click="vm.save(folder)">
+            <span class="glyphicon glyphicon-save"></span>
+          </button>
+
+        </button>
+
+    </span>
+
+  <button class="btn btn-default bit_btn_add" ng-click="vm.create()" ng-disabled="vm.disableAdd">
+    <span class="glyphicon glyphicon-plus"></span>
+  </button>
+
+  <!--<span class="label label-default">Default</span>-->
+  <!--<span class="label label-primary">Primary</span>-->
+  <!--<span class="label label-success">Success</span>-->
+  <!--<span class="label label-info">Info</span>-->
+  <!--<span class="label label-warning">Warning</span>-->
+  <!--<span class="label label-danger">Danger</span>-->
+</div>

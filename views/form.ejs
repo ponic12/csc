@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html ng-app="form.app">
+
+<head>
+   <title>Complejo San Clemente</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+   <!--STYLES-->
+   <link rel="stylesheet" href="/lib/styles/angular-toastr.min.css">
+   <link rel="stylesheet" href="/lib/styles/bootstrap.min.css">
+   <link rel="stylesheet" href="/lib/styles/font-awesome.min.css">
+   <link rel="stylesheet" href="/csc.css">
+   <link rel="stylesheet" href="/cscps.css">
+   <link rel="stylesheet" href="/form.css">
+   <link rel="stylesheet" href="/lib/spaFrk/psFramework/psFramework.css">
+   <link rel="stylesheet" href="/lib/spaFrk/psMenu/psMenu.css">
+   <link rel="stylesheet" href="/login/login.css">
+   <link rel="stylesheet" href="/modules/agenda/agenda.css">
+   <link rel="stylesheet" href="/modules/bitacoras/bitacoraDetalle.css">
+   <link rel="stylesheet" href="/modules/bitacoras/bitacoras.css">
+   <link rel="stylesheet" href="/modules/configuracion/configuracion.css">
+   <link rel="stylesheet" href="/modules/contactos/contactos.css">
+   <link rel="stylesheet" href="/modules/dialogos/dialogos.css">
+   <link rel="stylesheet" href="/modules/huespedes/huespedes.css">
+   <link rel="stylesheet" href="/modules/main/main.css">
+   <!--STYLES END-->
+
+   <!--SCRIPTS-->
+   <script src="/lib/js/sails.io.js"></script>
+   <script src="/lib/js/jquery.js"></script>
+   <script src="/lib/js/angular.min.js"></script>
+   <script src="/lib/js/angular-ui-router.min.js"></script>
+   <script src="/lib/js/angular-animate.min.js"></script>
+   <script src="/lib/js/bootstrap.min.js"></script>
+   <script src="/lib/js/angular-toastr.tpls.min.js"></script>
+   <script src="/lib/js/directives.js"></script>
+   <script src="/lib/js/framework.web.js"></script>
+   <script src="/lib/js/fwk.js"></script>
+   <script src="/lib/js/moment.min.js"></script>
+   <script src="/lib/js/ui-bootstrap-tpls.min.js"></script>
+   <script src="/lib/spaFrk/psMenu/psMenu.mod.js"></script>
+   <script src="/lib/spaFrk/psDashboard/psDashboard.mod.js"></script>
+   <script src="/lib/spaFrk/psFramework/psFramework.mod.js"></script>
+   <script src="/cscps.mod.js"></script>
+   <script src="/csc.mod.js"></script>
+   <script src="/form.mod.js"></script>
+   <script src="/login/login.mod.js"></script>
+   <script src="/modules/agenda/agenda.ctrl.js"></script>
+   <script src="/modules/bitacoras/bitacoraDetalle.ctrl.js"></script>
+   <script src="/modules/bitacoras/bitacoras.ctrl.js"></script>
+   <script src="/modules/configuracion/configuracion.ctrl.js"></script>
+   <script src="/modules/contactos/contactos.ctrl.js"></script>
+   <script src="/modules/dialogos/dialogos.ctrl.js"></script>
+   <script src="/modules/huespedes/formulario.ctrl.js"></script>
+   <script src="/modules/huespedes/huespedes.ctrl.js"></script>
+   <script src="/modules/main/main.ctrl.js"></script>
+   <script src="/csc.ctrl.js"></script>
+   <script src="/form.ctrl.js"></script>
+   <script src="/lib/spaFrk/psFramework/psFramework.ctrl.js"></script>
+   <script src="/lib/spaFrk/psFramework/psFramework.dir.js"></script>
+   <script src="/lib/spaFrk/psMenu/psMenu.ctrl.js"></script>
+   <script src="/lib/spaFrk/psMenu/psMenu.dir.js"></script>
+   <script src="/lib/spaFrk/psMenu/psMenuGroup.dir.js"></script>
+   <script src="/lib/spaFrk/psMenu/psMenuItem.dir.js"></script>
+   <script src="/login/login.ctrl.js"></script>
+   <!--SCRIPTS END-->
+
+</head>
+
+<body ng-controller="form.ctrl as vm" ng-cloak class="form_signinBack">
+   <section ng-hide="vm.flags.isLogged" class="login_loginBack">
+      <div class="form_frame">
+        <div class="login_logo">
+          <img src="login/images/beach.png" />
+        </div>
+        <form ng-submit="vm.signin()" name="signin">
+          <div class="form-inline login_group">
+            <div class="input-group login_input_group" 
+                 ng-class="{'has-error':signin.email.$invalid && signin.email.$dirty}">
+              <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+              <input type="email" class="form-control" placeholder="jperez@gmail.com" name="email" ng-model="vm.email" required>
+            </div>
+            <span class="form_validation has-error" ng-if="signin.email.$dirty">
+              <span ng-show="signin.email.$error.required">Campo requerido.</span>
+              <span ng-show="signin.email.$error.email">No es una direccion de correo valida.</span>
+            </span>  
+          </div>
+          <button class="btn btn-primary btn-lg form_btn" type="submit" ng-disabled="signin.$invalid">
+            <span ng-show="!vm.flags.loading">Ingresar</span>
+            <span class="overlord-loading-spinner fa fa-spinner" ng-show="vm.flags.loading"></span>
+            <span ng-show="vm.flags.loading">Cargando...</span>
+          </button>
+        </form>
+      </div>
+   </section>
+   <section class="container form_signupBack" ng-show="vm.flags.isLogged">
+      <div class="page-header">
+         <img src="login/images/beach.png" class="form_logo col-xs-2 hidden-xs pull left img-thumbnail" />
+         <h3 class="csc_title col-xs-12 col-sm-10 form_header">Formulario de ingreso</h3>
+      </div>
+      <form ng-submit="vm.save()" name="signup">
+         <div class="row">
+            <div class="input-group sim_groupFS">
+               <input type="text"
+                  class="form-control sim_txtFS"
+                  uib-datepicker-popup="dd-MM-yyyy"
+                  ng-model="dt"
+                  is-open="opened"
+                  ng-required="true"
+                  show-weeks="false"
+                  show-button-bar="false"
+                  placeholder="Fecha de ingreso" />
+               <span class="input-group-btn">
+                  <button class="btn sim_btnFS"
+                      ng-click="open($event)">
+                      <i class="glyphicon glyphicon-calendar"></i>
+                  </button>
+               </span>
+            </div>
+            <div class="form-group">
+               <div class="col-sm-5">
+                  <label for="fechaDesde" class="control-label">Fecha de Ingreso</label>
+                  <p> (El ingreso es a partir de las 11 AM) </p>
+                  <span class="help-block has-error" ng-if="signup.fechaDesde.$dirty">
+                     <span ng-show="signup.fechaDesde.$error.required">Campo requerido.</span>
+                  </span>
+               </div>
+               <div class="col-sm-6">
+                  <input type="date" class="form_fecha form-control" name="fechaDesde" ng-model="vm.data.dateFrom" required>
+               </div>
+            </div>
+         </div>
+
+         <div class="row">
+            <div class="form-group">
+               <div class="col-sm-5">
+                  <label for="fechaHasta" class="control-label">Fecha de Salida</label>
+                  <p> (La salida es hasta de las 10 AM)</p>
+                  <span class="help-block has-error" ng-if="signup.fechaHasta.$dirty">
+             <span ng-show="signup.fechaHasta.$error.required">Campo requerido.</span>
+                  </span>
+               </div>
+               <div class="col-sm-6">
+                  <input type="date" class="form_fecha form-control" name="fechaHasta" ng-model="vm.signupForm.dateTo" required>
+               </div>
+            </div>
+         </div>
+
+         <div class="row">
+            <h4 class="text-center">Datos del responsable de la reserva</h4>
+         </div>
+
+         <div class="row">
+            <!-- FIRST NAME-->
+            <!-- checking whether the form "signup" with the "firstname" property is both $invalid AND $dirty.  If it is
+             insert the "has-error" class on the input field (i.e. insert a red border around the input field) -->
+            <div class="form-group-row col-md-12" ng-class="{'has-error':signup.firstname.$invalid && signup.firstname.$dirty}">
+               <label>Nombre</label>
+
+               <!-- For this input field make it required, and have a max length of 25 -->
+               <input type="text" class="form-control" placeholder="e.g. Juan" name="firstname" ng-model="vm.data.guest.firstName" ng-maxlength="50" required>
+
+               <!-- Also, if signup.firstname.$dirty is true, show the message depending upon the particular properties truthiness (e.g. required
+               and/or maxlength) -->
+               <span class="help-block has-error" ng-if="signup.firstname.$dirty">
+               <span ng-show="signup.firstname.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.firstname.$error.maxlength">El nombre no puede superar 50 caracteres.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- LAST NAME -->
+            <div class="form-group col-md-12" ng-class="{'has-error':signup.lastname.$invalid && signup.lastname.$dirty}">
+               <label>Apellido</label>
+               <input type="text" class="form-control" placeholder="e.g. Perez" name="lastname" ng-model="vm.data.guest.lastName" ng-maxlength="50" required>
+               <span class="help-block has-error" ng-if="signup.lastname.$dirty">
+               <span ng-show="signup.lastname.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.lastname.$error.maxlength">El nombre completo no puede superar 50 caracteres.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- DNI -->
+            <div class="form-group col-md-12" ng-class="{'has-error':signup.dni.$invalid && signup.dni.$dirty}">
+               <label>DNI</label>
+               <input type="number" class="form-control" placeholder="Nro.documento" name="dni" ng-model="vm.data.guest.docNum" ng-maxlength="8" required>
+               <span class="help-block has-error" ng-if="signup.dni.$dirty">
+               <span ng-show="signup.dni.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.dni.$error.maxlength">El documento no puede superar 8 digitos.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- Direccion -->
+            <div class="form-group col-md-12" ng-class="{'has-error':signup.direccion.$invalid && signup.direccion.$dirty}">
+               <label>Direccion</label>
+               <input type="text" class="form-control" placeholder="Ingrese calle y altura" name="direccion" ng-model="vm.data.guest.address" ng-maxlength="60" required>
+               <span class="help-block has-error" ng-if="signup.direccion.$dirty">
+           <span ng-show="signup.direccion.$error.required">Campo requerido.</span>
+               <span ng-show="signup.direccion.$error.maxlength">La direccion no puede superar 60 caracteres.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- Localidad -->
+            <div class="form-group col-md-12" ng-class="{'has-error':signup.localidad.$invalid && signup.localidad.$dirty}">
+               <label>Localidad</label>
+               <input type="text" class="form-control" placeholder="Ingrese localidad/provincia" name="localidad" ng-model="vm.data.guest.location" ng-maxlength="60" required>
+               <span class="help-block has-error" ng-if="signup.localidad.$dirty">
+           <span ng-show="signup.localidad.$error.required">Campo requerido.</span>
+               <span ng-show="signup.localidad.$error.maxlength">La localidad no puede superar 60 caracteres.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- Telefono -->
+            <div class="form-group col-md-6" ng-class="{'has-error':signup.telefono.$invalid && signup.telefono.$dirty}">
+               <label>Telefono fijo</label>
+               <input type="number" class="form-control" placeholder="Ingrese telefono fijo" name="telefono" ng-model="vm.data.guest.phone" ng-maxlength="12">
+               <span class="help-block has-error" ng-if="signup.telefono.$dirty">
+           <span ng-show="signup.telefono.$error.maxlength">El numero telefonico no puede superar 12 digitos.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- Celular -->
+            <div class="form-group col-md-6" ng-class="{'has-error':signup.celular.$invalid && signup.celular.$dirty}">
+               <label>Telefono movil</label>
+               <input type="number" class="form-control" placeholder="Ingrese telefono movil" name="celular" ng-model="vm.data.guest.mobile" ng-maxlength="12">
+               <span class="help-block has-error" ng-if="signup.celular.$dirty">
+           <span ng-show="signup.celular.$error.maxlength">El numero telefonico no puede superar 12 digitos.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- E M A I L -->
+            <div class="form-group col-md-12" ng-class="{'has-error':signup.email.$invalid && signup.email.$dirty}">
+               <label>Dirección de correo electronico</label>
+               <input type="email" class="form-control" placeholder="jperez@gmail.com" name="email" ng-model="vm.data.guest.email" required>
+               <span class="help-block has-error" ng-if="signup.email.$dirty">
+           <span ng-show="signup.email.$error.required">Campo requerido.</span>
+               <span ng-show="signup.email.$error.email">No es una direccion de correo valida.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- Nro. Pasajeros menores-->
+            <div class="form-group col-md-6" ng-class="{'has-error':signup.pasajeros.$invalid && signup.pasajeros.$dirty}">
+               <label>Cantidad de menores (de 0 a 12 años)</label>
+               <input type="number" class="form-control" name="menores" ng-model="vm.data.children" ng-maxlength="2">
+               <span class="help-block has-error" ng-if="signup.menores.$dirty">
+           <span ng-show="signup.menores.$error.required">Campo requerido.</span>
+               <span ng-show="signup.menores.$error.maxlength">El numero de menores no puede superar 2 digitos.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- Nro. Pasajeros adultos -->
+            <div class="form-group col-md-6" ng-class="{'has-error':signup.adultos.$invalid && signup.adultos.$dirty}">
+               <label>Cantidad de adultos</label>
+               <input type="number" class="form-control" name="adultos" ng-model="vm.data.adults" ng-maxlength="2">
+               <span class="help-block has-error" ng-if="signup.adultos.$dirty">
+           <span ng-show="signup.adultos.$error.required">Campo requerido.</span>
+               <span ng-show="signup.adultos.$error.maxlength">El numero de adultos no puede superar 2 digitos.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- Auto -->
+            <div class="form-group col-md-4" ng-class="{'has-error':signup.auto.$invalid && signup.auto.$dirty}">
+               <label>Posee vehiculo</label>
+               <input type="checkbox" class="form-control" name="auto" ng-model="vm.data.vehicle">
+               <span class="help-block has-error" ng-if="signup.auto.$dirty">
+           <span ng-show="signup.pasajeros.$error.required">Campo requerido.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- Mascota -->
+            <div class="form-group col-md-4" ng-class="{'has-error':signup.mascota.$invalid && signup.mascota.$dirty}">
+               <label>Posee mascota</label>
+               <input type="checkbox" class="form-control" name="mascota" ng-model="vm.data.pet">
+               <span class="help-block has-error" ng-if="signup.mascota.$dirty">
+           <span ng-show="signup.mascota.$error.required">Campo requerido.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- Tamaño Mascota -->
+            <div class="form-group col-md-4" ng-class="{'has-error':signup.petSize.$invalid && signup.petSize.$dirty}">
+               <label>Tamaño de la mascota</label>
+               <div class="btn-group btn-group-sm" data-toggle="buttons">
+                  <label class="btn btn-success"><input type="radio">Pequeña</label>
+                  <label class="btn btn-success"><input type="radio">Mediana</label>
+                  <label class="btn btn-success"><input type="radio">Grande</label>
+               </div>
+               <input type="text" class="form-control" name="petSize" ng-model="vm.data.petSize">
+               <span class="help-block has-error" ng-if="signup.petSize.$dirty">
+           <span ng-show="signup.petS.$error.required">Campo requerido.</span>
+               </span>
+            </div>
+         </div>
+
+         <div class="row">
+            <!-- Notas -->
+            <div class="form-group col-md-12">
+               <label>Mas de un vehiculo (auto, jet ski, cuatricilo....) se cobra $100 x dia extra.</label>
+               <label>Debe llevar sabanas y toallas.</label>
+            </div>
+         </div>
+
+
+         <div class="row">
+            <button class="btn btn-primary btn-lg btn-block" type="submit" ng-disabled="signup.$invalid">
+         <span ng-show="!vm.flags.loading">Guardar cambios</span>
+         <span class="overlord-loading-spinner fa fa-spinner" ng-show="vm.flags.loading"></span>
+         <span ng-show="vm.flags.loading">Guardando cambios...</span>
+       </button>
+         </div>
+         <div class="row">
+            <div class="panel">
+               <p>Recuerde que puede modificar la informacion tantas veces como desee hasta tanto no se formalice la reserva</p>
+            </div>
+         </div>
+   </form>
+   </section>
+   
+   <footer class="container form_footer" ng-class="{'form_footerBG': vm.flags.isLogged == true}">
+         <h4>Complejo San Clemente</h4>
+         <p> Tel: 02477-15331941</p>
+         <p>complejoSanClemente@gmail.com</p>
+   </footer>
+   <script type="text/ng-template" id="popupFrame.html">
+      <div class="sgt_headerPopup">
+         <div class="modal-title sgt_titlePopup">{{title}}</div>
+      </div>
+      <div class="sgt_bodyPopup">
+         <div ng-if="isTemplate" ng-include="customTemplateUrl"></div>
+         <div ng-if="!isTemplate">{{message}}</div>
+      </div>
+      <div class="sgt_btns">
+         <button type="button" class="btn btn-default sgt_btnCancel" ng-click="cancel()" ng-if="cancelFlag">Cancelar</button>
+         <button type="button" class="btn btn-default sgt_btnAceptar" ng-click="ok()" ng-disabled="!okFlag">Aceptar</button>
+      </div>
+   </script>
+</body>
+
+</html>

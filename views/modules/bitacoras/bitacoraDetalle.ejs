@@ -1,0 +1,23 @@
+<div ng-controller="bitacoraDetalle.ctrl as vm">
+  
+  <div class="bd_history">
+    <div class="bd_item_detalle" ng-repeat="msg in vm.dataHistory"
+         id="{{ ::$index }}" scroll-to-last="{{ ::$index }}" >
+        <div class="bd_item_header">
+          <div class="bd_item_user" ng-style="vm.setColor(msg)">{{::vm.fullName(msg)}}</div>
+          <div class="bd_item_date">{{::vm.formatFecha(msg.createdAt)}}</div>
+          <div class="bd_item_info">{{::msg.texto}}</div>
+        </div>
+      <div style="clear:both"></div>
+    </div>
+  </div>
+  
+  <div class="bd_input">
+    <textarea class="bd_input_text" ng-model="vm.msg">
+    </textarea>
+    <button class="btn btn-default bd_btn_add" ng-click="vm.addMsg()" ng-disabled="!vm.msg">
+      <span class="glyphicon glyphicon-arrow-up"></span>
+    </button>
+  </div>
+
+</div>

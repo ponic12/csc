@@ -1,0 +1,137 @@
+.bit_folder.ng-enter,
+.bit_folder.ng-leave {
+    transition: transform 750ms;
+}
+
+.bit_folder.ng-enter,
+.bit_folder.ng-leave-active{
+    transform: translate3d(-100%,0,0);
+}
+.bit_folder.ng-enter-active {
+    transform: translate3d(0%,0,0);
+}
+
+
+
+
+
+.bit_frame {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 56px);
+}
+
+.bit_pnl {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-top: 20px;
+    text-align: center;
+    background: radial-gradient(#bbb, #888) !important;
+    position: absolute;
+    top: 55px;
+    bottom: 0px;
+    width: 100%;
+}
+
+.bit_folder {
+    position:relative;
+    top:0px;
+    left:0px;
+    width:50px;
+    height: 50px;
+}
+.bit_bitacoraItem {
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.75);
+}
+
+
+.bit_btn_add {
+	box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+	border: .1em solid #EEE;
+	font-size: 1em;
+	line-height: 1.1em;
+	color: #fff;
+	background: radial-gradient(at top left, #FAA, #F00);
+	margin: auto;
+	border-radius: 50%;
+	height: 3em;
+	width: 3em;
+	bottom: 10px;
+    right: 10px;
+	position: fixed;
+}
+
+    
+.bit_btn {
+    position:relative;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.75);
+}
+
+.bit_btn_close {
+    position: absolute;
+    top: -75px;
+    left: 140px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+    background-color: #555;
+    color: white;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+
+.bit_glyph_close {
+    left: -5px;
+    top: 0px;
+}
+
+.bit_btn_save {
+    position: absolute;
+    top: 40px;
+    left: 115px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+    background-color: #555;
+    color: white;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+}
+
+.bit_alerts {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+    background: radial-gradient(at top left, #CCC, red);
+    color: white;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+}
+.bit_alertsNum {
+  font-size: 16px;
+  margin: 3px;
+}
+
+.bit_nombre{
+    margin-top: -40px;
+    font-size: 20px;
+    width: 120px;
+    text-align: center;
+}
+.bit_fecha {
+    margin-top: 10px;
+    font-size: 13px;
+    width: 120px;
+    text-align: center;
+}
+.bit_color_picker {
+    position: absolute;   
+    top: 120px;
+    left: 7px;
+}

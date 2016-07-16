@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html ng-app="loginModule">
+
+<head>
+  <title>Complejo San Clemente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+  <!--STYLES-->
+  <link rel="stylesheet" href="/lib/styles/angular-toastr.min.css">
+  <link rel="stylesheet" href="/lib/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/lib/styles/font-awesome.min.css">
+  <link rel="stylesheet" href="/csc.css">
+  <link rel="stylesheet" href="/cscps.css">
+  <link rel="stylesheet" href="/form.css">
+  <link rel="stylesheet" href="/lib/spaFrk/psFramework/psFramework.css">
+  <link rel="stylesheet" href="/lib/spaFrk/psMenu/psMenu.css">
+  <link rel="stylesheet" href="/login/login.css">
+  <link rel="stylesheet" href="/modules/agenda/agenda.css">
+  <link rel="stylesheet" href="/modules/bitacoras/bitacoraDetalle.css">
+  <link rel="stylesheet" href="/modules/bitacoras/bitacoras.css">
+  <link rel="stylesheet" href="/modules/configuracion/configuracion.css">
+  <link rel="stylesheet" href="/modules/contactos/contactos.css">
+  <link rel="stylesheet" href="/modules/dialogos/dialogos.css">
+  <link rel="stylesheet" href="/modules/huespedes/huespedes.css">
+  <link rel="stylesheet" href="/modules/main/main.css">
+  <!--STYLES END-->
+  <!--SCRIPTS-->
+  <script src="/lib/js/sails.io.js"></script>
+  <script src="/lib/js/jquery.js"></script>
+  <script src="/lib/js/angular.min.js"></script>
+  <script src="/lib/js/angular-ui-router.min.js"></script>
+  <script src="/lib/js/angular-animate.min.js"></script>
+  <script src="/lib/js/bootstrap.min.js"></script>
+  <script src="/lib/js/angular-toastr.tpls.min.js"></script>
+  <script src="/lib/js/directives.js"></script>
+  <script src="/lib/js/framework.web.js"></script>
+  <script src="/lib/js/fwk.js"></script>
+  <script src="/lib/js/moment.min.js"></script>
+  <script src="/lib/js/ui-bootstrap-tpls.min.js"></script>
+  <script src="/lib/spaFrk/psMenu/psMenu.mod.js"></script>
+  <script src="/lib/spaFrk/psDashboard/psDashboard.mod.js"></script>
+  <script src="/lib/spaFrk/psFramework/psFramework.mod.js"></script>
+  <script src="/cscps.mod.js"></script>
+  <script src="/csc.mod.js"></script>
+  <script src="/form.mod.js"></script>
+  <script src="/login/login.mod.js"></script>
+  <script src="/modules/agenda/agenda.ctrl.js"></script>
+  <script src="/modules/bitacoras/bitacoraDetalle.ctrl.js"></script>
+  <script src="/modules/bitacoras/bitacoras.ctrl.js"></script>
+  <script src="/modules/configuracion/configuracion.ctrl.js"></script>
+  <script src="/modules/contactos/contactos.ctrl.js"></script>
+  <script src="/modules/dialogos/dialogos.ctrl.js"></script>
+  <script src="/modules/huespedes/formulario.ctrl.js"></script>
+  <script src="/modules/huespedes/huespedes.ctrl.js"></script>
+  <script src="/modules/main/main.ctrl.js"></script>
+  <script src="/csc.ctrl.js"></script>
+  <script src="/form.ctrl.js"></script>
+  <script src="/lib/spaFrk/psFramework/psFramework.ctrl.js"></script>
+  <script src="/lib/spaFrk/psFramework/psFramework.dir.js"></script>
+  <script src="/lib/spaFrk/psMenu/psMenu.ctrl.js"></script>
+  <script src="/lib/spaFrk/psMenu/psMenu.dir.js"></script>
+  <script src="/lib/spaFrk/psMenu/psMenuGroup.dir.js"></script>
+  <script src="/lib/spaFrk/psMenu/psMenuItem.dir.js"></script>
+  <script src="/login/login.ctrl.js"></script>
+  <!--SCRIPTS END-->
+</head>
+
+<body ng-controller="login.ctrl as vm" ng-cloak class="container-fluid">
+
+  <div ng-show="vm.flags.enableLogin" class="login_loginBack">
+    <div class="login_frame">
+      <div class="login_inner">
+        <div class="login_logo">
+          <img src="login/images/beach.png" />
+        </div>
+        <form name="signin">
+          <div class="form-inline login_group">
+            <div class="input-group login_input_group" 
+                 ng-class="{'has-error':signin.email.$invalid && signin.email.$dirty}">
+              <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+              <input type="email" class="form-control" name="email" ng-model="vm.signinForm.email" 
+                     placeholder="MAIL" required>
+            </div>
+            <!--<span class="help-block has-error" ng-if="signin.email.$dirty">-->
+            <!--  <span ng-show="signin.email.$error.required">Campo requerido.</span>-->
+            <!--  <span ng-show="signin.email.$error.email">No es una direccion de correo valida.</span>-->
+            <!--</span>  -->
+          </div>
+          <div class="form-inline login_group">
+            <div class="input-group login_input_group">
+              <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+              <input type="password" class="form-control" name="password" ng-model="vm.signinForm.password" 
+                     placeholder="CONTRASEÑA" required ng-minlength="6" ng-enter="vm.signin()">
+            </div>
+            <!--<span class="help-block has-error" ng-if="signin.password.$dirty">-->
+            <!--  <span ng-show="signin.password.$error.required">Campo requerido.</span>-->
+            <!--  <span ng-show="signin.password.$error.minlength">La contraseña debe tener al menos 6 caracteres.</span>-->
+            <!--</span>              -->
+          </div>
+          <div class="login_buttons">
+            <span ng-click="vm.signin()" class="login_btn-signin" ng-disabled="signin.$invalid">
+              <div class="buttonCircle">
+                <img class="login_login_icon" src="login/images/login.png" width="64" height="64" />
+              </div>
+              <p class="circle-text">Ingresar</p>
+            </span>
+            <span class="login_btn-signup">
+              <div class="buttonCircle" ng-click="vm.signup()">
+                <img class="login_login_icon" src="login/images/sign.png" width="64" height="64" />
+              </div>
+              <p class="circle-text">Registrarse</p>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div ng-hide="vm.flags.enableLogin" class="login_signBack">
+    <div class="login_frame">
+      <div class="login_inner">
+        <div class="login_logo">
+          <img src="login/images/Signup.png" />
+        </div>
+        <form ng-submit="vm.submitSignupForm()" name="signup">
+            <div class="row">
+
+              <!-- FIRST NAME -->
+              <!-- checking whether the form "signup" with the "firstname" property is both $invalid AND $dirty.  If it is
+                    insert the "has-error" class on the input field (i.e. insert a red border around the input field) -->
+              <div class="control-group form-group col-md-12" 
+                ng-class="{'has-error':signup.firstname.$invalid && signup.firstname.$dirty}">
+                <label>Nombre</label>
+
+                <!-- For this input field make it required, and have a max length of 25 -->
+                <input type="text" class="form-control" placeholder="e.g. Juan" name="firstname" ng-model="vm.signupForm.firstName" ng-maxlength="50" required>
+
+                <!-- Also, if signup.firstname.$dirty is true, show the message depending upon the particular properties truthiness (e.g. required
+                      and/or maxlength) -->
+                <span class="help-block has-error" ng-if="signup.firstname.$dirty">
+                  <span ng-show="signup.firstname.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.firstname.$error.maxlength">El nombre no puede superar 50 caracteres.</span>
+                </span>
+              </div>
+              
+              <!-- LAST NAME -->
+              <!-- checking whether the form "signup" with the "lastname" property is both $invalid AND $dirty.  If it is
+                    insert the "has-error" class on the input field (i.e. insert a red border around the input field)-->
+              <div class="control-group form-group col-md-9"
+                ng-class="{'has-error':signup.lastname.$invalid && signup.lastname.$dirty}">
+                <label>Apellido</label>
+
+                <!-- For this input field make it required, and have a max length of 25 -->
+                <input type="text" class="form-control" placeholder="e.g. Perez" name="lastname" ng-model="vm.signupForm.lastName" ng-maxlength="50" required>
+
+                <!-- Also, if signup.lastname.$dirty is true, show the message depending upon the particular properties truthiness (e.g. required
+                      and/or maxlength) -->
+                <span class="help-block has-error" ng-if="signup.lastname.$dirty">
+                  <span ng-show="signup.lastname.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.lastname.$error.maxlength">El nombre completo no puede superar 50 caracteres.</span>
+                </span>
+              </div>
+              <div class="control-group form-group col-md-3">
+                <label>Color</label>
+                <input class="" type="color" ng-model="vm.signupForm.color">
+              </div>
+
+              <!-- E M A I L -->
+              <div class="control-group form-group col-md-12" 
+                ng-class="{'has-error':signup.email.$invalid && signup.email.$dirty}">
+                <label>Dirección de correo electronico</label>
+                <input type="email" class="form-control" placeholder="jperez@gmail.com" 
+                       name="email" ng-model="vm.signupForm.email" required>
+                <span class="help-block has-error" ng-if="signup.email.$dirty">
+                  <span ng-show="signup.email.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.email.$error.email">No es una direccion de correo valida.</span>
+                </span>
+              </div>
+
+              <!-- P A S S W O R D -->
+              <div class="control-group form-group col-md-6" 
+                ng-class="{'has-error':signup.password.$invalid && signup.password.$dirty}">
+                <label>Seleccione nueva contraseña</label>
+                <!-- Added the compareTo directive that compares the passowrds -->
+                <input type="password" class="form-control" placeholder="al menos 6 caracteres" name="password" ng-model="vm.signupForm.password" id="password" required ng-minlength="6" compare-to="vm.signupForm.confirmPassword">
+                <span class="help-block has-error" ng-if="signup.password.$dirty">
+                  <span ng-show="signup.password.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.password.$error.minlength">La contraseña debe tener al menos 6 caracteres.</span>
+                </span>
+              </div>
+
+              <!-- C O N F I R M  P A S S W O R D -->
+              <div class="control-group form-group col-md-6">
+                <label>Reingrese su contraseña</label>
+                <input type="password" class="form-control" placeholder="una vez mas" name="confirmation" ng-model="vm.signupForm.confirmPassword" required>
+                <span class="help-block has-error" ng-if="signup.confirmation.$dirty">
+                        <span ng-show="signup.password.$error.compareTo">No coinciden aún...</span>
+                <span ng-show="signup.confirmation.$error.required">Campo requerido.</span>
+                </span>
+              </div>
+            </div>
+
+            <br/>
+
+            <!-- Disable signup button until the form has no errors -->
+            <button class="btn btn-primary btn-lg btn-block" type="submit" ng-disabled="signup.$invalid">
+              <span ng-show="!vm.flags.loading">Crear nueva cuenta</span>
+              <span class="overlord-loading-spinner fa fa-spinner" ng-show="vm.flags.loading"></span>
+              <span ng-show="vm.flags.loading">Creando cuenta...</span>
+            </button>
+
+            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+          </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="login_loading" ng-show="vm.flags.loading">
+      <img class="login_loadingSpinner" src="spinner.gif" />
+  </div>
+</body>
+
+</html>

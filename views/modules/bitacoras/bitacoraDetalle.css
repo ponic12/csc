@@ -1,0 +1,120 @@
+/* HISTORY */
+/*.animate-enter, */
+/*.animate-leave*/
+/*{ */
+/*    -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;*/
+/*    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;*/
+/*    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;*/
+/*    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;*/
+/*    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;*/
+/*    position: relative;*/
+/*    display: block;*/
+/*} */
+
+/*.animate-enter.animate-enter-active, */
+/*.animate-leave {*/
+/*    opacity: 1;*/
+/*    top: 0;*/
+/*    height: 30px;*/
+/*}*/
+
+/*.animate-leave.animate-leave-active,*/
+/*.animate-enter {*/
+/*    opacity: 0;*/
+/*    top: -50px;*/
+/*    height: 0px;*/
+/*}*/
+
+.bd_item_detalle.ng-enter,
+.bd_item_detalle.ng-leave {
+    transition: transform 750ms;
+}
+
+.bd_item_detalle.ng-enter,
+.bd_item_detalle.ng-leave-active{
+    transform: translate3d(-100%,0,0);
+}
+.bd_item_detalle.ng-enter-active {
+    transform: translate3d(0%,0,0);
+}
+
+
+.bd_history {
+    /* background: radial-gradient(at top, #bbb, #88a) !important; */
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: absolute;
+    padding: 3px;
+    top: 0px;
+    bottom: 55px;
+    width: 100%;
+}
+
+.bd_item_detalle {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 5px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.bd_item_detalle .bd_item_header {
+    padding: 5px;
+}
+
+.bd_item_detalle .bd_item_user {
+    color:blue;
+    float: left;
+}
+
+.bd_item_detalle .bd_item_date {
+    float: right;
+}
+
+.bd_item_detalle .bd_item_info {
+    margin-top: 22px;
+    text-align: justify;
+}
+
+
+/************************************/
+
+
+/* INPUT */
+
+.bd_input {
+    /*background: linear-gradient(#ddf, #88d); */
+    /*border: 5px solid #F50;*/
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    bottom: 0px;
+    height: 55px;
+}
+
+.bd_input_text {
+    position: absolute;
+    border-radius: 5px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+    top: 4px;
+    left: 4px;
+    width: calc(100% - 55px);
+    resize: none;
+    padding-left: 8px;
+}
+
+.bd_btn_add {
+    position: absolute;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5) !important;
+    color: #fff;
+    background: radial-gradient(at top left, #AAF, #00F);
+    border-radius: 50%;
+    height: 3em;
+    width: 3em;
+    top: 4px;
+    right: 5px;
+}
+
+
+/************************************/

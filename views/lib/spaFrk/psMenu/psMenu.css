@@ -1,0 +1,100 @@
+.ps-menu-area {
+    position: relative;
+    background: -webkit-linear-gradient(#333, #000);
+    background: -moz-linear-gradient(#333, #000);
+    background: -o-linear-gradient(#333, #000);
+    background: linear-gradient(#333, #000) !important;
+    color: #ccc;
+    padding-left: 0px;
+}
+
+.ps-menu-area ul {
+    padding-left: 0px;
+}
+
+.ps-menu-area .btn:hover {
+    color: #ccc;
+}
+
+.ps-menu-area-vertical {
+    width: 200px;
+    min-height: 100vh;
+    padding-top: 30px;
+}
+
+.ps-menu-area-horizontal {
+    width:100%;
+    height: 40px;
+}
+
+.ps-menu {
+    list-style-type: none;
+    vertical-align: top;
+}
+
+.ps-menu ul {
+    display: inline;
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.ps-menu li {
+    line-height: 3em;
+    cursor: pointer;
+}
+
+.ps-menu li div {
+    display: inline-block;
+    width: 90%;
+    padding-left: 16px;
+}
+
+.ps-selectable-item:hover {
+    background-color: #555;
+}
+
+.ps-menu-icon {
+    margin-right: 10px;
+}
+
+.ps-menu-active-indicator {
+    float: right;
+    color: #ddd;
+    margin-right: 0px;
+    margin-top: 8px;
+}
+
+.ps-noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ps-group-inficator-left {
+    float: right;
+    color: #ddd;
+    margin-right: 2px;
+    margin-top: 15px;
+}
+
+.ps-subitem-section {
+    padding-left: 16px;
+}
+
+.ps-menu-layout-up {
+    margin: 12px;
+    padding: 2px 8px;
+    color: #bbb;
+    background-color: #333;
+    border: 1px solid #999;
+}
+
+.ps-item-horizontal{
+    display: inline-block;
+    width: 165px !important;
+    margin-left: 20px;
+    margin-top: 5px;
+    line-height: 1.5em !important;
+}

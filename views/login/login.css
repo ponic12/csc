@@ -1,0 +1,209 @@
+/** {*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+    /*box-sizing: border-box;*/
+    /*-webkit-user-select: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none;*/
+/*}*/
+
+/**:focus {*/
+/*    outline: 0;*/
+/*}*/
+
+/*html,*/
+/*body {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    padding: 0;*/
+/*    margin: 0;*/
+/*    background-color: white;*/
+/*    font-family: sans-serif;*/
+/*    overflow: hidden;*/
+/*    -ms-touch-action: none;*/
+/*}*/
+
+.login_loginBack {
+    background: -webkit-linear-gradient(#38b, #148) !important;
+    background: -o-linear-gradient(#38b, #148) !important;
+    background: -moz-linear-gradient(#38b, #148) !important;
+    background: radial-gradient(#38b, #148) !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+.login_signupBack {
+    background: -webkit-linear-gradient(#fff, #fec) !important;
+    background: -o-linear-gradient(#fff, #fec) !important;
+    background: -moz-linear-gradient(#fff, #fec) !important;
+    background: linear-gradient(#fff, #fec) !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.login_loginBack.ng-hide.ng-hide-add-active {
+    display: block !important;
+}
+.login_loginBack.ng-hide-remove {
+	-webkit-animation: enter_sequence .5s linear; /* Safari/Chrome */
+	animation: enter_sequence .5s linear; /* IE10+ and Future Browsers */
+}
+.login_loginBack.ng-hide-add {
+	-webkit-animation: leave_sequence .5s linear; /* Safari/Chrome */
+	animation: leave_sequence .5s linear; /* IE10+ and Future Browsers */
+}
+
+
+.login_signupBack.ng-hide.ng-hide-add-active {
+    display: block !important;
+}
+.login_signupBack.ng-hide-remove {
+	-webkit-animation: enter_sequence .5s linear; /* Safari/Chrome */
+	animation: enter_sequence .5s linear; /* IE10+ and Future Browsers */
+}
+.login_signupBack.ng-hide-add {
+	-webkit-animation: leave_sequence .5s linear; /* Safari/Chrome */
+	animation: leave_sequence .5s linear; /* IE10+ and Future Browsers */
+}
+
+@-webkit-keyframes enter_sequence {
+	0% { opacity:0; }
+	100% { opacity:1; }
+}
+@keyframes enter_sequence {
+	0% { opacity:0; }
+	100% { opacity:1; }
+}
+
+@-webkit-keyframes leave_sequence {
+	0% { opacity:1; }
+	100% { opacity:0; }
+}
+
+@keyframes leave_sequence {
+	0% { opacity:1; }
+	100% { opacity:0; }
+}
+
+
+.login_loading {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: 0 auto;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.75;
+}
+
+.login_loadingSpinner {
+    height: 50px;
+    width: 50px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+.login_frame {
+    position: relative;
+    margin-top: 5%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+.login_inner {
+    width: 300px;
+    margin: auto;
+}
+
+.login_logo {
+    /*width: 20%;*/
+    /*float: left;*/
+    text-align: center;
+    margin-bottom: 20px;
+    /*margin-right: 20px;*/
+}
+
+    .login_logo img {
+        width: 100px;
+    }
+
+
+.login_buttons{
+    position:static;  
+}
+
+.login_login_icon{
+    top: 19px;
+    left: 21px;
+    position: absolute;
+}
+
+.login_btn-signin{
+    position:relative;
+    float:left;
+}
+.login_btn-signup{
+    position:relative;
+    float:right;
+}
+
+.circle-text {
+    font-size: 20px;
+    text-align: center;
+    color:white;
+    text-shadow: 1.5px 1.5px 2px rgba(100, 100, 100, 1);
+}
+
+
+.login_group {
+    display: block !important;
+    margin-bottom: 40px;
+}
+
+.login_input_group {
+    width: 100%;
+    margin-bottom: 15px;
+    box-shadow:3px 3px 4px rgba(0,0,0,0.2);
+}
+
+.login_style {
+    margin-bottom: 0.5rem;
+}
+
+/*@media (min-width: 768px)*/
+/*.form-inline .form-group {*/
+    /*display: inline-block;*/
+/*    margin-bottom: 0;*/
+    /*vertical-align: middle;*/
+/*}*/
+
+/*@media screen and (max-width:480px) {*/
+/*    .login_logo {*/
+/*        float: none;*/
+/*        width: 100%;*/
+/*        margin-right: auto;*/
+/*    }*/
+    
+/*    .login_form {*/
+/*        float: none;*/
+/*        width: 100%;*/
+/*    }*/
+/*}*/

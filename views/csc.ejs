@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html ng-app="csc">
+
+<head>
+  <title>Complejo San Clemente</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+  <!--STYLES-->
+  <link rel="stylesheet" href="/lib/styles/angular-toastr.min.css">
+  <link rel="stylesheet" href="/lib/styles/bootstrap.min.css">
+  <link rel="stylesheet" href="/lib/styles/font-awesome.min.css">
+  <link rel="stylesheet" href="/csc.css">
+  <link rel="stylesheet" href="/cscps.css">
+  <link rel="stylesheet" href="/form.css">
+  <link rel="stylesheet" href="/lib/spaFrk/psFramework/psFramework.css">
+  <link rel="stylesheet" href="/lib/spaFrk/psMenu/psMenu.css">
+  <link rel="stylesheet" href="/login/login.css">
+  <link rel="stylesheet" href="/modules/agenda/agenda.css">
+  <link rel="stylesheet" href="/modules/bitacoras/bitacoraDetalle.css">
+  <link rel="stylesheet" href="/modules/bitacoras/bitacoras.css">
+  <link rel="stylesheet" href="/modules/configuracion/configuracion.css">
+  <link rel="stylesheet" href="/modules/contactos/contactos.css">
+  <link rel="stylesheet" href="/modules/dialogos/dialogos.css">
+  <link rel="stylesheet" href="/modules/huespedes/huespedes.css">
+  <link rel="stylesheet" href="/modules/main/main.css">
+  <!--STYLES END-->
+
+  <!--SCRIPTS-->
+  <script src="/lib/js/sails.io.js"></script>
+  <script src="/lib/js/jquery.js"></script>
+  <script src="/lib/js/angular.min.js"></script>
+  <script src="/lib/js/angular-ui-router.min.js"></script>
+  <script src="/lib/js/angular-animate.min.js"></script>
+  <script src="/lib/js/bootstrap.min.js"></script>
+  <script src="/lib/js/angular-toastr.tpls.min.js"></script>
+  <script src="/lib/js/directives.js"></script>
+  <script src="/lib/js/framework.web.js"></script>
+  <script src="/lib/js/fwk.js"></script>
+  <script src="/lib/js/moment.min.js"></script>
+  <script src="/lib/js/ui-bootstrap-tpls.min.js"></script>
+  <script src="/lib/spaFrk/psMenu/psMenu.mod.js"></script>
+  <script src="/lib/spaFrk/psDashboard/psDashboard.mod.js"></script>
+  <script src="/lib/spaFrk/psFramework/psFramework.mod.js"></script>
+  <script src="/cscps.mod.js"></script>
+  <script src="/csc.mod.js"></script>
+  <script src="/form.mod.js"></script>
+  <script src="/login/login.mod.js"></script>
+  <script src="/modules/agenda/agenda.ctrl.js"></script>
+  <script src="/modules/bitacoras/bitacoraDetalle.ctrl.js"></script>
+  <script src="/modules/bitacoras/bitacoras.ctrl.js"></script>
+  <script src="/modules/configuracion/configuracion.ctrl.js"></script>
+  <script src="/modules/contactos/contactos.ctrl.js"></script>
+  <script src="/modules/dialogos/dialogos.ctrl.js"></script>
+  <script src="/modules/huespedes/formulario.ctrl.js"></script>
+  <script src="/modules/huespedes/huespedes.ctrl.js"></script>
+  <script src="/modules/main/main.ctrl.js"></script>
+  <script src="/csc.ctrl.js"></script>
+  <script src="/form.ctrl.js"></script>
+  <script src="/lib/spaFrk/psFramework/psFramework.ctrl.js"></script>
+  <script src="/lib/spaFrk/psFramework/psFramework.dir.js"></script>
+  <script src="/lib/spaFrk/psMenu/psMenu.ctrl.js"></script>
+  <script src="/lib/spaFrk/psMenu/psMenu.dir.js"></script>
+  <script src="/lib/spaFrk/psMenu/psMenuGroup.dir.js"></script>
+  <script src="/lib/spaFrk/psMenu/psMenuItem.dir.js"></script>
+  <script src="/login/login.ctrl.js"></script>
+  <!--SCRIPTS END-->
+  
+</head>
+
+<body ng-controller="csc.ctrl as ctrl" ng-cloak class="container-fluid">
+  <div id="segatHeader" class="sgt_header">
+    <div>
+      <div>
+        <div class="sgt_leftIcons">
+          <button type="button" class="sgt_iconsSegat" id="menuBtn" ng-click="flags.flagL = !flags.flagL" ng-hide="flags.id == -1">
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+          </button>
+        </div>
+        <div class="sgt_rightIcons">
+          <button type="button" class="button button-icon icon ion-ios-bell sgt_iconsSegat sgt_iconStatus" ng-class="{'sgt_iconStatusON':alertsCounter > 0}" ui-sref="alerts">
+            <div class="sgt_counter" ng-class="{'sgt_counterON':alertsCounter > 0}">
+              <div class="sgt_counterNumber">{{alertsCounter}}</div>
+            </div>
+          </button>
+        </div>
+      </div>
+      <div class="csc_containerLeftMenu" ng-class="{'move-me':flags.id==0 && flags.flagL}">
+        <div>
+          <ul ng-click="flags.flagL = false">
+            <!--Main-->
+            <li class="sgt_itemMenu">
+              <a class="csc_optionMenu" ui-sref="main">
+                <span class="sgt_iconoIzq glyphicon glyphicon-th-large"></span> Modulos
+              </a>
+            </li>
+            <!--Agenda-->
+            <li class="sgt_itemMenu">
+              <a class="csc_optionMenu" ui-sref="agenda">
+                <span class="sgt_iconoIzq glyphicon glyphicon-calendar"></span> Agenda
+              </a>
+            </li>
+            <!--Bitacoras-->
+            <li class="sgt_itemMenu">
+              <a class="csc_optionMenu" ui-sref="bitacoras">
+                <span class="sgt_iconoIzq glyphicon glyphicon-th-list"></span> Bitacoras
+              </a>
+            </li>
+            <!--Dialogos-->
+            <li class="sgt_itemMenu">
+              <a class="csc_optionMenu" ui-sref="dialogos">
+                <span class="sgt_iconoIzq glyphicon glyphicon-refresh"></span> Dialogos
+              </a>
+            </li>
+            <!--Huespedes-->
+            <li class="sgt_itemMenu">
+              <a class="csc_optionMenu" ui-sref="huespedes">
+                <span class="sgt_iconoIzq glyphicon glyphicon-home"></span> Huespedes
+              </a>
+            </li>
+            <!--Contactos-->
+            <li class="sgt_itemMenu">
+              <a class="csc_optionMenu" ui-sref="contactos">
+                <span class="sgt_iconoIzq glyphicon glyphicon-user"></span> Contactos
+              </a>
+            </li>
+            <!--Configuracion-->
+            <li class="sgt_itemMenu">
+              <a class="csc_optionMenu" ui-sref="configuracion">
+                <span class="sgt_iconoIzq glyphicon glyphicon-cog"></span> Configuracion
+              </a>
+            </li>
+
+            <!--Salir-->
+            <li class="sgt_itemMenu">
+              <a class="csc_optionMenu" ng-click="ctrl.cerrarSesion()">
+                <span class="sgt_iconoIzq glyphicon glyphicon-off"></span> Salir
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div ng-click="ctrl.showVersion()" class="csc_title_frame">
+      <p class="csc_title">{{nombre}}</p>
+    </div>
+  </div>
+
+  <div class="csc_view">
+    <div ui-view ng-animate-children></div>
+  </div>
+
+  <div class="csc_loading" ng-click="ctrl.noSpin()" ng-show="flags.spin">
+    <img class="csc_loadingSpinner" src="spinner.gif" />
+  </div>
+
+
+
+  <script type="text/ng-template" id="popupFrame.html">
+    <div class="sgt_headerPopup">
+      <div class="modal-title sgt_titlePopup">{{title}}</div>
+    </div>
+    <div class="sgt_bodyPopup">
+      <div ng-if="isTemplate" ng-include="customTemplateUrl"></div>
+      <div ng-if="!isTemplate">{{message}}</div>
+    </div>
+    <div class="sgt_btns">
+      <button type="button" class="btn btn-default sgt_btnCancel" ng-click="cancel()" ng-if="cancelFlag">Cancelar</button>
+      <button type="button" class="btn btn-default sgt_btnAceptar" ng-click="ok()" ng-disabled="!okFlag">Aceptar</button>
+    </div>
+  </script>
+
+  <script type="text/javascript">
+    var userinfo = {};
+    userinfo.id = '<%= me.id %>';
+    userinfo.firstName = '<%= me.firstName %>';
+    userinfo.lastName = '<%= me.lasttName %>';
+    userinfo.email = '<%= me.email %>';
+  </script>
+</body>
+
+</html>

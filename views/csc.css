@@ -1,0 +1,646 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*box-sizing: border-box;*/
+    /*-webkit-user-select: none;*/
+    /*-moz-user-select: none;*/
+    /*-ms-user-select: none;*/
+    /*user-select: none;*/
+}
+
+*:focus {
+    outline: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: #ddf;
+    font-family: sans-serif;
+    font-family: "Open sans", sans-serif;
+    -ms-touch-action: none;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+
+/****************/
+/*angular styles*/
+/****************/
+ng-view.ng-enter,
+[ng-view].ng-enter {
+    opacity:0;
+    transition: opacity 1s;
+}
+
+ng-view.ng-enter-active,
+[ng-view].ng-enter-active {
+    opacity:1;
+}
+
+
+/****************/
+/*  CSS Styles  */
+/****************/
+.csc_view{
+    /*border: 10px solid #0F0;*/
+    background: radial-gradient(#eee, #888) !important;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    height: calc(100vh - 55px);
+}
+
+/******************************************************************************/
+
+.buttonRect {
+    background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+    border-radius: 5%;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+    float: left;
+    height: 1500px;
+    margin: 0 30px 30px 0;
+    position: relative;
+    width: 150px;
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+}
+
+.buttonRect:after {
+    color: #e9e6e4;
+    content: "";
+    display: block;
+    font-size: 30px;
+    height: 30px;
+    text-decoration: none;
+    text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+    position: absolute;
+    width: 30px;
+}
+
+.buttonRect:hover {
+    background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+    background-image: linear-gradient(top, #fff, #f4f1ee);
+    color: #0088cc;
+}
+
+.buttonRect:active {
+    background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+    background-image: linear-gradient(top, #efedec, #f7f4f4);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .4), inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+}
+
+.buttonRect:active:after {
+    color: #dbd2d2;
+    text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
+}
+
+
+/******************************************************************************/
+
+.buttonCircle {
+    background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+    border-radius: 50%;
+    box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+    float: left;
+    position: relative;
+    height: 100px;
+    width: 100px;
+    -webkit-transition: all .1s linear;
+    transition: all .1s linear;
+}
+
+.buttonCircle:after {
+    color: #e9e6e4;
+    content: "";
+    display: block;
+    font-size: 30px;
+    height: 30px;
+    text-decoration: none;
+    text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+    position: absolute;
+    width: 30px;
+}
+
+.buttonCircle:hover {
+    background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+    background-image: linear-gradient(top, #fff, #f4f1ee);
+    color: #0088cc;
+}
+
+.buttonCircle:active {
+    background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+    background-image: linear-gradient(top, #efedec, #f7f4f4);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, .4), inset 0px -3px 1px 1px rgba(204, 198, 197, .5);
+}
+
+.buttonCircle:active:after {
+    color: #dbd2d2;
+    text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
+}
+
+
+/******************************************************************************/
+
+.csc_loading {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: 0 auto;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.75;
+}
+
+.csc_loadingSpinner {
+    height: 50px;
+    width: 50px;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.csc_containerLeftMenu {
+    width: 240px;
+    height: calc(100% - 55px);
+    left: -300px;
+    top: 55px;
+    position: fixed;
+    z-index: 1000;
+    background: linear-gradient(#337ab7, #094C83) !important;
+    opacity: 0;
+    transition: all linear 0.35s;
+}
+
+.csc_containerLeftMenu.move-me {
+    left: 0px;
+    opacity: 1;
+}
+
+.csc_optionMenu {
+    padding: 10px;
+    color: #fff !important;
+    font-size: 16px;
+    width: 239px;
+    display: block;
+    text-shadow: 1px 1px 4px #111 !important;
+}
+
+.csc_iconoIzq {
+    margin-left: 2px;
+    margin-right: 10px;
+    font-size: 18px;
+    width: 16px;
+    text-align: center;
+    display: inline-block;
+    text-shadow: 1px 1px 4px #111 !important;
+}
+
+.csc_title {
+    color: #fff !important;
+    font-size: 24px !important;
+    margin-top: 6px !important;
+    text-shadow: 1px 1px 4px #111 !important;
+}
+
+.csc_title_frame {
+    position: absolute;
+    margin-left: 40px;
+}
+
+.sgt_iconsSegat {
+    font-size: 30px;
+    color: #fff !important;
+    text-shadow: 1px 1px 4px #111 !important;
+    padding: 0px !important;
+    background-color: transparent;
+    border: none;
+}
+
+.sgt_itemMenu {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    background: transparent;
+}
+
+.sgt_itemMenu:hover {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+.sgt_header {
+    height: 55px !important;
+    border-bottom: 0 !important;
+    background: -webkit-linear-gradient(#094C83, #337AB7) !important;
+    background: -o-linear-gradient(#094C83, #337AB7) !important;
+    background: -moz-linear-gradient(#094C83, #337AB7) !important;
+    background: linear-gradient(#094C83, #337AB7) !important;
+}
+
+.sgt_connectionStatus {
+    text-shadow: 1px 1px 4px #111 !important;
+}
+
+.sgt_leftIcons {
+    position: absolute;
+    top: 10px;
+    left: 3px;
+    text-align: left;
+    display: inherit;
+}
+
+.sgt_rightIcons {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    text-align: right;
+    display: inherit;
+}
+
+.sgt_iconStatus {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #779 !important;
+}
+
+.sgt_iconStatusON {
+    color: white !important;
+}
+
+.sgt_counter {
+    opacity: 0;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    right: 30px;
+    top: 1px;
+    background-color: red;
+    border-radius: 100%;
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.75);
+    z-index: 1000;
+    font-size: 12px;
+}
+
+.sgt_counterON {
+    opacity: 1;
+}
+
+.sgt_counterNumber {
+    font-size: 11px;
+    z-index: 1000;
+    color: #fff;
+}
+
+.sgt_bkgdScreen {
+    background: lightgray !important;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.sgt_checkbox-rojo input:checked + .checkbox-icon:before,
+.sgt_checkbox-rojo input:checked:before {
+    background: #E61722;
+    border-color: #E61722;
+}
+
+.sgt_titlePopup {
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 17px;
+    padding: 10px;
+    background: linear-gradient(#337ab7, #054175);
+    box-shadow: 1px 1px 10px 1px #9a999e;
+    text-align: center;
+}
+
+.sgt_headerPopup {
+    border-bottom: none;
+    padding: 10px;
+}
+
+.sgt_bodyPopup {
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    text-align: center;
+    font-size: 16px;
+}
+
+.sgt_btns {
+    padding: 10px;
+    display: flex;
+    display: -webkit-flex;
+    border-top: none;
+    width: 100%;
+}
+
+.sgt_btnAceptar {
+    background-color: #054175;
+    color: #fff;
+    width: 50%;
+    margin: auto;
+    flex: 1;
+}
+
+.sgt_btnCancel {
+    width: 50%;
+    margin-right: 5px;
+    flex: 1;
+}
+
+.sgt_button-azul {
+    background-color: #054175;
+    color: #fff;
+}
+
+.sgt_selectStyle {
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.sgt_inputText {
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.75);
+}
+
+.sgt_backgroundColorAccordion {
+    background-color: #ebebeb;
+}
+
+.sgt_dropdowns {
+    padding: 5px;
+    border-radius: 8px;
+    height: auto;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.75);
+}
+
+.sgt_areaTexto {
+    width: 100%;
+    height: 100px;
+    resize: none;
+    border: 1px solid #ddd !important;
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.75);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 12px;
+}
+
+.sgt_btnOptions {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    min-width: 0;
+    min-height: 0;
+    border-color: transparent;
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.30) !important;
+    margin-right: 5px;
+}
+
+.sgt_btnAddChechmark {
+    background-color: #409A3C;
+}
+
+.sgt_btnDeleteTrash {
+    background-color: #E61722;
+}
+
+.sgt_grilla {
+    min-height: 106px;
+    height: auto;
+    border: 1px solid #ddd !important;
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.75);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    margin-top: 10px;
+}
+
+.sgt_itemSelectedGrilla {
+    border-color: none;
+    border-style: none;
+    padding: 0;
+}
+
+.sgt_miCheckBox {
+    border: none !important;
+    font-size: 13px;
+    padding: 10px 5px 10px 40px !important;
+}
+
+.sgt_txtCant {
+    width: 50px;
+    height: 33px !important;
+    margin-right: 4px;
+    border-radius: 8px;
+    padding-left: 0.5rem !important;
+    margin-bottom: 10px;
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.75);
+}
+
+.sgt_iconHelp {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.sgt_contTabs {
+    margin: 4px;
+}
+
+.sgt_tabs {
+    width: 50% !important;
+}
+
+.sgt_btnBar {
+    background-color: transparent;
+    color: #464646;
+    border: none;
+    min-width: 120px;
+    font-size: 15px !important;
+    text-shadow: 1px 1px 2px #444 !important;
+    height: 40px;
+}
+
+.sgt_catSelec {
+    background-color: #ebebeb;
+    color: #337ab7;
+    text-shadow: 1px 1px 2px #666 !important;
+    width: 100%;
+    border-top-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.75);
+}
+
+.sgt_textDetalle {
+    padding: 8.5px;
+}
+
+.sgt_frame {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: calc(100vh - 56px);
+    padding: 5px;
+}
+
+.sgt_loadingCoord {
+    color: #BD5050;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.sgt_textoLocaliz {
+    margin: 10px 0px;
+    padding: 6px 12px;
+    /*background: white;*/
+    border-radius: 4px;
+    text-align: center;
+    /*box-shadow: 3px 3px 9px -4px rgba(0,0,0,0.75);*/
+}
+
+.sgt_datosLoc {
+    text-decoration: underline;
+}
+
+.sgt_geoLoc {
+    display: -webkit-inline-box;
+}
+
+.sgt_dataLat {
+    margin-right: 10px;
+}
+
+.sgt_btn {
+    box-shadow: 3px 3px 9px -4px rgba(0, 0, 0, 0.75);
+    margin-right: 5px;
+}
+
+@media screen and (max-width:480px) {
+    .sgt_grilla {
+        margin-top: 0px;
+    }
+}
+
+
+/* Rounded Checkboxes 
+
+<div class="roundedOne">
+	<input type="checkbox" value="1" id="roundedOne" name="check" />
+	<label for="roundedOne"></label>
+</div>
+
+*/
+
+.checkboxesFrame {
+    display: inline-flex;
+    /*height:0px;*/
+}
+
+
+/*.lblCheckList {
+    margin-top: 15px;
+    margin-left: 10px;
+}*/
+
+
+/* ROUNDED ONE */
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+
+/* ROUNDED ONE */
+
+.roundedOne {
+    margin: 4px 8px 4px 4px;
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    min-height: 24px;
+    background: #fcfff4;
+    background: -webkit-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -moz-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -o-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: -ms-linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#fcfff4', endColorstr='#b3bead', GradientType=0);
+    /*margin: 8px auto;*/
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.roundedOne label {
+    cursor: pointer;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    left: 4px;
+    top: 4px;
+    -webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+    -moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+    box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.5), 0px 1px 0px rgba(255, 255, 255, 1);
+    background: -webkit-linear-gradient(top, #aaa 0%, #eee 100%);
+    background: -moz-linear-gradient(top, #aaa 0%, #eee 100%);
+    background: -o-linear-gradient(top, #aaa 0%, #eee 100%);
+    background: -ms-linear-gradient(top, #aaa 0%, #eee 100%);
+    background: linear-gradient(top, #aaa 0%, #eee 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#aaa', endColorstr='#eee', GradientType=0);
+}
+
+.roundedOne label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: #38c;
+    /*#00bf00;*/
+    background: -webkit-linear-gradient(top, #38c 0%, #27b 100%);
+    background: -moz-linear-gradient(top, #38c 0%, #27b 100%);
+    background: -o-linear-gradient(top, #38c 0%, #27b 100%);
+    background: -ms-linear-gradient(top, #38c 0%, #27b 100%);
+    background: linear-gradient(top, #38c 0%, #27b 100%);
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+    top: 1px;
+    left: 1px;
+    -webkit-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+/*.roundedOne label:hover::after {
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+            filter: alpha(opacity=30);
+            opacity: 0.3;
+        }*/
+
+.roundedOne input[type=checkbox]:checked + label:after {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+}

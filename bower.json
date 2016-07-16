@@ -1,0 +1,30 @@
+{
+  "name": "csc",
+  "description": "client side js libs",
+  "main": "app.js",
+  "authors": [
+    "ubuntu"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "^1.5.5",
+    "angular-bootstrap": "^1.3.2",
+    "angular-ui-router": "ui-router#^0.2.18",
+    "bootstrap": "^3.3.6",
+    "toastr": "^2.1.2",
+    "jquery": "^2.2.3",
+    "angular": "^1.5.5",
+    "AngularJS-Toaster": "angularjs-toaster#^2.0.0"
+  },
+  "resolutions": {
+    "angular": "^1.5.5"
+  }
+}

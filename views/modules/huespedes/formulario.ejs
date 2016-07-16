@@ -1,0 +1,224 @@
+<div ng-controller="formulario.ctrl as vm">
+  <div class="login_signBack">
+    <div class="login_frame">
+      <div class="login_inner">
+        <div class="login_logo">
+          <img src="login/images/Signup.png" />
+        </div>
+        <form ng-submit="vm.submitSignupForm()" name="signup">
+            <div class="row">
+              
+              <div class="hue_dates">
+                <div class="hue_fecha_desde">
+                  <input type="date" class="hue_fecha" placeholder="Fecha de ingreso" name="fechaDesde" ng-model="vm.signupForm.dateFrom" required>
+                  <p>El ingreso es a partir de las 11 AM</p>
+                  <span class="help-block has-error" ng-if="signup.fechaDesde.$dirty">
+                    <span ng-show="signup.fechaDesde.$error.required">Campo requerido.</span>
+                  </span>
+                </div>  
+                <div class="hue_fecha_hasta">
+                  <input type="date" class="hue_fecha" placeholder="Fecha de salida" name="fechaHasta" ng-model="vm.signupForm.dateTo" required>
+                  <p>La salida es hasta de las 10 AM</p>
+                  <span class="help-block has-error" ng-if="signup.fechaHasta.$dirty">
+                    <span ng-show="signup.fechaHasta.$error.required">Campo requerido.</span>
+                  </span>
+                </div>
+              </div>
+              
+              <label>Datos del responsable de la reserva</label>
+              <!-- FIRST NAME-->
+              <!-- checking whether the form "signup" with the "firstname" property is both $invalid AND $dirty.  If it is
+                    insert the "has-error" class on the input field (i.e. insert a red border around the input field) -->
+              <div class="control-group form-group col-md-12" 
+                ng-class="{'has-error':signup.firstname.$invalid && signup.firstname.$dirty}">
+                <label>Nombre</label>
+
+                <!-- For this input field make it required, and have a max length of 25 -->
+                <input type="text" class="form-control" placeholder="e.g. Juan" name="firstname" ng-model="vm.signupForm.firstName" ng-maxlength="50" required>
+
+                <!-- Also, if signup.firstname.$dirty is true, show the message depending upon the particular properties truthiness (e.g. required
+                      and/or maxlength) -->
+                <span class="help-block has-error" ng-if="signup.firstname.$dirty">
+                  <span ng-show="signup.firstname.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.firstname.$error.maxlength">El nombre no puede superar 50 caracteres.</span>
+                </span>
+              </div>
+              
+              <!-- LAST NAME -->
+              <!-- checking whether the form "signup" with the "lastname" property is both $invalid AND $dirty.  If it is
+                    insert the "has-error" class on the input field (i.e. insert a red border around the input field)-->
+              <div class="control-group form-group col-md-12"
+                ng-class="{'has-error':signup.lastname.$invalid && signup.lastname.$dirty}">
+                <label>Apellido</label>
+
+                <!-- For this input field make it required, and have a max length of 25 -->
+                <input type="text" class="form-control" placeholder="e.g. Perez" name="lastname" ng-model="vm.signupForm.lastName" ng-maxlength="50" required>
+
+                <!-- Also, if signup.lastname.$dirty is true, show the message depending upon the particular properties truthiness (e.g. required
+                      and/or maxlength) -->
+                <span class="help-block has-error" ng-if="signup.lastname.$dirty">
+                  <span ng-show="signup.lastname.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.lastname.$error.maxlength">El nombre completo no puede superar 50 caracteres.</span>
+                </span>
+              </div>
+              
+              <!-- DNI -->
+              <div class="control-group form-group col-md-12"
+                ng-class="{'has-error':signup.dni.$invalid && signup.dni.$dirty}">
+                <label>DNI</label>
+                <input type="number" class="form-control" placeholder="Nro.documento" name="dni" ng-model="vm.signupForm.dni" ng-maxlength="8" required>
+                <span class="help-block has-error" ng-if="signup.dni.$dirty">
+                  <span ng-show="signup.dni.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.dni.$error.maxlength">El documento no puede superar 8 digitos.</span>
+                </span>
+              </div>
+              
+              <!-- Direccion -->
+              <div class="control-group form-group col-md-12"
+                ng-class="{'has-error':signup.direccion.$invalid && signup.direccion.$dirty}">
+                <label>Direccion</label>
+                <input type="text" class="form-control" placeholder="Ingrese calle y altura" name="direccion" ng-model="vm.signupForm.address" ng-maxlength="60" required>
+                <span class="help-block has-error" ng-if="signup.direccion.$dirty">
+                  <span ng-show="signup.direccion.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.direccion.$error.maxlength">La direccion no puede superar 60 caracteres.</span>
+                </span>
+              </div>
+
+              <!-- Localidad -->
+              <div class="control-group form-group col-md-12"
+                ng-class="{'has-error':signup.localidad.$invalid && signup.localidad.$dirty}">
+                <label>Localidad</label>
+                <input type="text" class="form-control" placeholder="Ingrese localidad/provincia" name="localidad" ng-model="vm.signupForm.location" ng-maxlength="60" required>
+                <span class="help-block has-error" ng-if="signup.localidad.$dirty">
+                  <span ng-show="signup.localidad.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.localidad.$error.maxlength">La localidad no puede superar 60 caracteres.</span>
+                </span>
+              </div>
+
+              <!-- Telefono -->
+              <div class="control-group form-group col-md-6"
+                ng-class="{'has-error':signup.telefono.$invalid && signup.telefono.$dirty}">
+                <label>Telefono fijo</label>
+                <input type="number" class="form-control" placeholder="Ingrese telefono fijo" name="telefono" ng-model="vm.signupForm.phoneNumber" ng-maxlength="12">
+                <span class="help-block has-error" ng-if="signup.telefono.$dirty">
+                  <span ng-show="signup.telefono.$error.maxlength">El numero telefonico no puede superar 12 digitos.</span>
+                </span>
+              </div>
+              <!-- Celular -->
+              <div class="control-group form-group col-md-6"
+                ng-class="{'has-error':signup.celular.$invalid && signup.celular.$dirty}">
+                <label>Telefono movil</label>
+                <input type="number" class="form-control" placeholder="Ingrese telefono movil" name="celular" ng-model="vm.signupForm.mobileNumber" ng-maxlength="12">
+                <span class="help-block has-error" ng-if="signup.celular.$dirty">
+                  <span ng-show="signup.celular.$error.maxlength">El numero telefonico no puede superar 12 digitos.</span>
+                </span>
+              </div>
+
+              <!-- E M A I L -->
+              <div class="control-group form-group col-md-12" 
+                ng-class="{'has-error':signup.email.$invalid && signup.email.$dirty}">
+                <label>Dirección de correo electronico</label>
+                <input type="email" class="form-control" placeholder="jperez@gmail.com" 
+                       name="email" ng-model="vm.signupForm.email" required>
+                <span class="help-block has-error" ng-if="signup.email.$dirty">
+                  <span ng-show="signup.email.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.email.$error.email">No es una direccion de correo valida.</span>
+                </span>
+              </div>
+              
+              <!-- Nro. Pasajeros menores-->
+              <div class="control-group form-group col-md-6"
+                ng-class="{'has-error':signup.pasajeros.$invalid && signup.pasajeros.$dirty}">
+                <label>Cantidad de menores (de 0 a 12 años)</label>
+                <input type="number" class="form-control" name="menores" ng-model="vm.signupForm.childrenNumber" ng-maxlength="2">
+                <span class="help-block has-error" ng-if="signup.menores.$dirty">
+                  <span ng-show="signup.menores.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.menores.$error.maxlength">El numero de menores no puede superar 2 digitos.</span>
+                </span>
+              </div>
+              <!-- Nro. Pasajeros adultos -->
+              <div class="control-group form-group col-md-6"
+                ng-class="{'has-error':signup.adultos.$invalid && signup.adultos.$dirty}">
+                <label>Cantidad de adultos</label>
+                <input type="number" class="form-control" name="adultos" ng-model="vm.signupForm.adultsNumber" ng-maxlength="2">
+                <span class="help-block has-error" ng-if="signup.adultos.$dirty">
+                  <span ng-show="signup.adultos.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.adultos.$error.maxlength">El numero de adultos no puede superar 2 digitos.</span>
+                </span>
+              </div>
+              
+              <!-- Auto -->
+              <div class="control-group form-group col-md-4"
+                ng-class="{'has-error':signup.auto.$invalid && signup.auto.$dirty}">
+                <label>Posee vehiculo</label>
+                <input type="checkbox" class="form-control" name="auto" ng-model="vm.signupForm.vehicle">
+                <span class="help-block has-error" ng-if="signup.auto.$dirty">
+                  <span ng-show="signup.pasajeros.$error.required">Campo requerido.</span>
+                </span>
+              </div>
+              <!-- Mascota -->
+              <div class="control-group form-group col-md-4"
+                ng-class="{'has-error':signup.mascota.$invalid && signup.mascota.$dirty}">
+                <label>Posee mascota</label>
+                <input type="checkbox" class="form-control" name="mascota" ng-model="vm.signupForm.pet">
+                <span class="help-block has-error" ng-if="signup.mascota.$dirty">
+                  <span ng-show="signup.mascota.$error.required">Campo requerido.</span>
+                </span>
+              </div>
+              <!-- Tamaño Mascota -->
+              <div class="control-group form-group col-md-4"
+                ng-class="{'has-error':signup.tamaño.$invalid && signup.tamaño.$dirty}">
+                <label>Tamaño de la mascota</label>
+                <input type="text" class="form-control" name="tamaño" ng-model="vm.signupForm.petSize">
+                <span class="help-block has-error" ng-if="signup.tamaño.$dirty">
+                  <span ng-show="signup.tamaño.$error.required">Campo requerido.</span>
+                </span>
+              </div>              
+
+              <!-- Notas -->
+              <div class="control-group form-group col-md-12">
+                <label>Mas de un vehiculo (auto, jet ski, cuatricilo....) se cobra $100 x dia extra.</label>
+                <label>Debe llevar sabanas y toallas.</label>
+              </div>
+
+                
+              
+              
+
+              <!-- P A S S W O R D -->
+              <div class="control-group form-group col-md-6" 
+                ng-class="{'has-error':signup.password.$invalid && signup.password.$dirty}">
+                <label>Seleccione nueva contraseña</label>
+                <!-- Added the compareTo directive that compares the passowrds -->
+                <input type="password" class="form-control" placeholder="al menos 6 caracteres" name="password" ng-model="vm.signupForm.password" id="password" required ng-minlength="6" compare-to="vm.signupForm.confirmPassword">
+                <span class="help-block has-error" ng-if="signup.password.$dirty">
+                  <span ng-show="signup.password.$error.required">Campo requerido.</span>
+                  <span ng-show="signup.password.$error.minlength">La contraseña debe tener al menos 6 caracteres.</span>
+                </span>
+              </div>
+
+              <!-- C O N F I R M  P A S S W O R D -->
+              <div class="control-group form-group col-md-6">
+                <label>Reingrese su contraseña</label>
+                <input type="password" class="form-control" placeholder="una vez mas" name="confirmation" ng-model="vm.signupForm.confirmPassword" required>
+                <span class="help-block has-error" ng-if="signup.confirmation.$dirty">
+                        <span ng-show="signup.password.$error.compareTo">No coinciden aún...</span>
+                <span ng-show="signup.confirmation.$error.required">Campo requerido.</span>
+                </span>
+              </div>
+            </div>
+
+            <br/>
+
+            <!-- Disable signup button until the form has no errors -->
+            <button class="btn btn-primary btn-lg btn-block" type="submit" ng-disabled="signup.$invalid">
+              <span ng-show="!vm.flags.loading">Guardar cambios</span>
+              <span class="overlord-loading-spinner fa fa-spinner" ng-show="vm.flags.loading"></span>
+              <span ng-show="vm.flags.loading">Guardando cambios...</span>
+            </button>
+
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
